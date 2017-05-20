@@ -1,7 +1,7 @@
-#Entity Framework 6 Library - Brass9
+# Entity Framework 6 Library - Brass9
 At Brass Nine Design we use Entity Framework 6 for data storage, and that's led to developing extensions to the framework itself. Many of them are planned features that were canceled in favor of moving on to Entity Framework 7, and returning to them at some future date.
 
-###Guidelines
+### Guidelines
 The library is built around the premise you put your Models in a separate Project from the majority of your code (eg B9, B9.Models), simply because EF performs a lot better in this arrangement. You don't have to, but it's a good idea.
 
 It also assumes you have some factory mechanism for creating Db instances. A base class for doing so is provided in this library - DbFactory. But you generally don't have to use it, in case you're using some IoC container.
@@ -10,7 +10,7 @@ It also assumes you have some factory mechanism for creating Db instances. A bas
 
 Data Migrations were long planned for EF but never arrived. This library makes them reasonably simple to perform.
 
-###Usage:
+### Usage:
 1. Create a Db class as usual, that extends EF's `DbContext` or some subclass of `DbContext`.
 2. Create a Model class to store the status of DataMigrations. I typically call this SystemSettings, but any existing single-row table you use for storing configuration data etc will do. It should implement the `IDataMigrationStatus` interface. (The interface is simple; it has one DateTime property, LastMigrationDate).
 3. In your regular Project (not the Models project, if using one), add a folder, WebApp, and another, DataMigrations. Your data migrations will live here.
@@ -100,6 +100,6 @@ A sample data migration
     
 As you can see you just throw a date on there and get to use existing EF like you're used to, to query, update and insert new data, instead of having to resort to raw SQL.
 
-###More Guidelines
+### More Guidelines
 
 It's wise to wrap the Migration in some logging code, so if it fails you get the error and log it somewhere. There are logging tools in this library as well if you'd like to log to the Db - that I'll document later.
