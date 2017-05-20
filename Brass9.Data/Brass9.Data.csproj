@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DD514BB1-6C0F-48B9-944B-B141815D7732}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Brass9.Data</RootNamespace>
+    <AssemblyName>Brass9.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bag.cs" />
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="Entity\B9EF\B9DbExtender.cs" />
+    <Compile Include="Entity\B9EF\ForcePKIdAttribute.cs" />
+    <Compile Include="Entity\B9EF\TablePerConcreteAttribute.cs" />
+    <Compile Include="Entity\BaseDbContext.cs" />
+    <Compile Include="Entity\BaseDbFactory.cs" />
+    <Compile Include="Entity\DataMigrating\DataMigration.cs" />
+    <Compile Include="Entity\DataMigrating\DataMigrator.cs" />
+    <Compile Include="Entity\DataMigrating\IDataMigrationStatus.cs" />
+    <Compile Include="Entity\DbHelper.cs" />
+    <Compile Include="Entity\EFConfig.cs" />
+    <Compile Include="Entity\DbSetExtensions\DbSetExtension.cs" />
+    <Compile Include="Entity\EFHelper.cs" />
+    <Compile Include="Entity\EFMetaHelper.cs" />
+    <Compile Include="Entity\EFSorter.cs" />
+    <Compile Include="Entity\IQueryableExtensions\IQueryableExtension.cs" />
+    <Compile Include="Entity\Migrations\B9DbMigration.cs" />
+    <Compile Include="Entity\Migrations\IndexAdvancedMigration.cs" />
+    <Compile Include="Entity\Migrations\IndexColumn.cs" />
+    <Compile Include="Entity\Migrations\IndexMigration.cs" />
+    <Compile Include="Entity\RuntimeModels\BaseRuntimeModel.cs" />
+    <Compile Include="Entity\RuntimeModels\RuntimeModelClassBuilder.cs" />
+    <Compile Include="Entity\RuntimeModels\RuntimeSelectBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\SqlDataType.cs" />
+    <Compile Include="LabelAttribute.cs" />
+    <Compile Include="Linq\CollectionHelper.cs" />
+    <Compile Include="Linq\ListSelector.cs" />
+    <Compile Include="Logging\ILogDb.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Logging\LogLine.cs" />
+    <Compile Include="Logging\Tagged\ITaggedLogDb.cs" />
+    <Compile Include="Logging\Tagged\Log.cs" />
+    <Compile Include="Logging\Tagged\TaggedLogLine.cs" />
+    <Compile Include="Logging\Tagged\LogTag.cs" />
+    <Compile Include="ModelTransform.cs" />
+    <Compile Include="ModelTransformInherit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spatial\GeoHelper.cs" />
+    <Compile Include="UniqueCodeGenerating\IUniqueCode.cs" />
+    <Compile Include="UniqueCodeGenerating\UniqueCodeGenerator.cs" />
+    <Compile Include="UniqueCodeGenerating\UniqueCodeGeneratorForDb.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Brass9.Collections\Brass9.Collections.csproj">
+      <Project>{ae5ecef3-2c20-4951-b2dc-20d44a611127}</Project>
+      <Name>Brass9.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brass9.Reflection\Brass9.Reflection.csproj">
+      <Project>{4173145e-6554-441e-b85a-e86e4ac0690f}</Project>
+      <Name>Brass9.Reflection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brass9\Brass9.csproj">
+      <Project>{9a76b156-9917-430b-a5a8-f3108b6dfd7a}</Project>
+      <Name>Brass9</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
