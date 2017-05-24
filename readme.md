@@ -19,7 +19,7 @@ Data Migrations were long planned for EF but never arrived. This library makes t
 2. Create a Model class to store the status of DataMigrations. I typically call this `SystemSettings`, but any existing single-row table you use for storing configuration data etc will do. It should implement the `IDataMigrationStatus` interface. (The interface is simple; it has one DateTime property, LastMigrationDate).
 3. In your regular Project (not the Models project, if using one), add a folder, WebApp, and another, DataMigrations. Your data migrations will live here.
 4. To code your first, create a class and extend Brass9.Data.Entity.DataMigration<Db>
-5. You'll need to implement 2 methods in your DataMigration. First, make a constructor that simply sets the date of the Migration. The system is going to use this the same way EF Migrations figures out where it's at in the schema.
+5. You'll need to implement 2 methods in your DataMigration - implementing `DataMigration<Db>` should outline it for you. First, set the date of the Migration in UTC, like `get { return new DateTime(... DateTimeKind.Utc)` (full sample code below). The system is going to use this the same way EF Migrations figures out where it's at in the schema.
 6. Implement `Task MigrateAsync(Db)`, applying whatever data changes you need.
 7. Finally, you need to ensure data migrations wakes up and runs at app start. You can do this however your IoC does it, or if you don't have one, run it from `Global.asax`
 
